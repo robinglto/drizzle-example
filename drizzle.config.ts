@@ -14,7 +14,8 @@ export default {
 
   // Authorizes our connection to PlanetScale via Drizzle ORM.
   dbCredentials: {
-    connectionString: process.env.DATABASE_URL,
+
+    connectionString: process.env.DATABASE_URL?.replace("mysql://", "mysql2://") || "",
   },
 
   // This is necessary if you want to use drizzle to
