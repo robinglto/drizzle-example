@@ -5,13 +5,11 @@ import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 export const createUser = async (name: string, email:string) => {
-    "use server"
   await db.insert(users).values({ name, email });
 };
 
-export const deleteUser = async (id:number) => {
-  "use server"
-  await db.delete(users).where(eq(users.id, id) );
+export const deleteUser = async (id: number, name: string, email: string) => {
+  await db.delete(users).where((eq(users.id, id) && eq(users.name, name)) && eq(users.email, email));
 };
 
 export const updateUser = async (name: string, email:string, id:number) => {

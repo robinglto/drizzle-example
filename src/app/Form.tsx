@@ -29,11 +29,10 @@ export default function Form() {
   const crearUsuario = () => {
     createUser(username, email);
   };
-
   const handleDelete = (event: any) => {
     event.preventDefault();
 
-    deleteUser(parseInt(id));
+    deleteUser(parseInt(id), username, email);
   };
 
   const handleUpdate = (event: any) => {
@@ -45,25 +44,23 @@ export default function Form() {
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100 text-black  w-2/3">
       <div>
-        <p className="mx-auto my-10 text-3xl text-center">
-          Crear un nuevo usuario
-        </p>
+        <p className="mx-auto my-10 text-3xl text-center">Create a new user</p>
         <div className="mx-auto w-2/3 my-10 space-y-5">
           <p>
-            <strong>Reglas de uso:</strong>
+            <strong>Rules of use:</strong>
           </p>
           <p>
-            1. Para crear un nuevo usaurio debes de colocar un nombre con mas de
-            3 caracteres y un email valido. El Id no es necesario debido a que
-            genera de manera automatica
+            1. To create a new user you must enter a name with more than 3
+            characters and a valid email. The Id is not necessary because it is
+            generated automatically
           </p>
           <p>
-            2. Para eliminar un usuario solo debes de colocar el Id del usuario
-            que quieres eliminar
+            2. To delete a user you must enter the ID, name and email of the
+            user you want to delete
           </p>
           <p>
-            3. Para actualizar un usuario debes especificar el usuario mediante
-            el id y luego colocar el nombre y correo que quieres colocarle Id.
+            3. To update a user you must specify the user using the id and then
+            enter the name and email you want to enter.
           </p>
         </div>
         <div className="  mx-auto  ">
@@ -76,7 +73,7 @@ export default function Form() {
                 id="id"
                 type="number"
                 value={id}
-                placeholder="Id del usuario a eliminar"
+                placeholder="Id"
                 onChange={handleChangeId}
                 className="text-black py-2 px-3 rounded-xl w-full "
               />
@@ -86,7 +83,7 @@ export default function Form() {
                 id="name"
                 type="text"
                 value={username}
-                placeholder="Nombre Completo"
+                placeholder="Name"
                 {...register("username", { required: true, minLength: 3 })}
                 onChange={handleChangeUsername}
                 className="text-black py-2 px-3 rounded-xl w-full "
@@ -99,7 +96,7 @@ export default function Form() {
               <input
                 id="email"
                 type="email"
-                placeholder="Correo Electronico"
+                placeholder="Email"
                 value={email}
                 required={true}
                 onChange={handleChangeEmail}
@@ -111,7 +108,7 @@ export default function Form() {
                 type="submit"
                 className="w-full border text-black border-black  rounded-md  py-1 px-2.5"
               >
-                Registrar
+                Create
               </button>
             </div>
           </form>

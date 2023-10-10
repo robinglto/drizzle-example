@@ -11,10 +11,10 @@ export default async function page() {
         <div className="h-screnn text-center flex justify-center mx-auto items-center bg-cyan-100/60 dark:bg-black dark:text-white w-1/2">
           <div>
             <div className="w-2/3 mx-auto space-y-5 mb-6">
-              <p className="text-5xl">Bienvenido</p>
+              <p className="text-5xl">Welcome</p>
               <p>
-                Registra tus datos para que formes parte de la comunidad que
-                estamos formando...
+                Register your data so you can be part of the community that we
+                are forming...
               </p>
             </div>
             {dbUsers.map((users) => (
